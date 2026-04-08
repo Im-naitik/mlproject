@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from catboost import CatBoostRegressor
 from sklearn.ensemble import(
     AdaBoostClassifier,
+    AdaBoostRegressor,
     GradientBoostingRegressor,
     RandomForestRegressor
 )
@@ -40,13 +41,13 @@ class ModelTrainer:
                 test_array[:,-1]
             )
             models= {
-                "Random Forest": RandomForestRegressor(),
-                "Decision Tree": DecisionTreeRegressor(),
-                "Gradient Boosting": GradientBoostingRegressor(),
+                "Random Forest": RandomForestRegressor(random_state=42),
+                "Decision Tree": DecisionTreeRegressor(random_state=42),
+                "Gradient Boosting": GradientBoostingRegressor(random_state=42),
                 "K-neighbors classifier": KNeighborsRegressor(),
-                "XGBRegressor": XGBRegressor(),
-                "CatBoosting Regressor": CatBoostRegressor(verbose=False),
-                "AdaBoost Regressor": AdaBoostClassifier()
+                "XGBRegressor": XGBRegressor(random_state=42),
+                "CatBoosting Regressor": CatBoostRegressor(verbose=False, random_state=42),
+                "AdaBoost Regressor": AdaBoostClassifier(random_state=42)
             }
 
             params={
