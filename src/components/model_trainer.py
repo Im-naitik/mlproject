@@ -47,7 +47,7 @@ class ModelTrainer:
                 "K-neighbors classifier": KNeighborsRegressor(),
                 "XGBRegressor": XGBRegressor(random_state=42),
                 "CatBoosting Regressor": CatBoostRegressor(verbose=False, random_state=42),
-                "AdaBoost Regressor": AdaBoostClassifier(random_state=42)
+                "AdaBoost Regressor": AdaBoostRegressor(random_state=42)
             }
 
             params={
