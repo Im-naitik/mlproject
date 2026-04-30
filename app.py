@@ -11,7 +11,7 @@ application = Flask(__name__)
 app=application
 ## route for a home page
 
-app.route('/')
+@app.route('/')
 def index():
     return render_template('index.html')
 
@@ -26,8 +26,8 @@ def predict_datapoint():
             parental_level_of_education=request.form.get('parental_level_of_education'),
             lunch=request.form.get('lunch'),
             test_preparation_course=request.form.get('test_preparation_course'),
-            reading_score=float(request.form.get('writing_score')),
-            writing_score=float(request.form.get('reading_score'))
+            reading_score=float(request.form.get('reading_score')),
+            writing_score=float(request.form.get('writing_score'))
 
         )
         pred_df =data.get_data_as_data_frame()
@@ -39,5 +39,8 @@ def predict_datapoint():
         return render_template('home.html',results=results[0])
     
 
-if __name__=="__main__":
-    app.run(host="0.0.0.0",debug=True)
+import os
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
