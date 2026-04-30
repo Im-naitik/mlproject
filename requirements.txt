@@ -2,8 +2,8 @@ pandas
 numpy
 seaborn
 matplotlib
-scikit-learn
 dill
+scikit-learn==1.7.2
 flask
 -e .
 gunicorn
